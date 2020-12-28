@@ -1,0 +1,436 @@
+2020-12-22 15:44:13.798960 [erro]: MySQL Error
+2020-12-22 15:54:34.232821 [erro]: MySQL Error
+2020-12-22 16:45:35.974862 [erro]: MySQL Error
+2020-12-22 17:05:40.133717 [erro]: MySQL Error
+2020-12-22 17:22:10.348342 [info]: timer tick
+2020-12-22 17:22:15.348726 [info]: timer tick
+2020-12-22 17:22:20.349296 [info]: timer tick
+2020-12-22 17:22:25.349686 [info]: timer tick
+2020-12-22 17:22:30.350011 [info]: timer tick
+2020-12-22 17:22:35.350057 [info]: timer tick
+2020-12-22 17:22:40.350097 [info]: timer tick
+2020-12-22 17:22:45.350645 [info]: timer tick
+2020-12-22 17:22:50.351261 [info]: timer tick
+2020-12-22 17:22:55.351301 [info]: timer tick
+2020-12-22 17:23:00.352053 [info]: timer tick
+2020-12-22 17:23:05.352129 [info]: timer tick
+2020-12-22 17:23:10.352168 [info]: timer tick
+2020-12-22 17:23:15.352325 [info]: timer tick
+2020-12-22 17:23:20.352356 [info]: timer tick
+2020-12-22 17:23:25.352397 [info]: timer tick
+2020-12-22 17:23:30.352434 [info]: timer tick
+2020-12-22 17:23:34.001332 [info]: deal with the client(10.0.2.15)
+2020-12-22 17:23:34.001397 [info]: adjust timer once
+2020-12-22 17:23:34.001443 [info]: GET / HTTP/1.1
+2020-12-22 17:23:34.001455 [info]: Host: 10.0.2.15:9006
+2020-12-22 17:23:34.001460 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:23:34.001463 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:23:34.001467 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+2020-12-22 17:23:34.001470 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+2020-12-22 17:23:34.001474 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:23:34.001477 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:23:34.001481 [info]: Accept-Encoding: gzip, deflate
+2020-12-22 17:23:34.001484 [info]: oop!unknow header: Accept-Encoding: gzip, deflate
+2020-12-22 17:23:34.001487 [info]: Connection: keep-alive
+2020-12-22 17:23:34.001491 [info]: Upgrade-Insecure-Requests: 1
+2020-12-22 17:23:34.001494 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-12-22 17:23:34.001497 [info]: 
+2020-12-22 17:23:34.074163 [info]: request:HTTP/1.1 200 OK
+
+2020-12-22 17:23:34.074198 [info]: request:HTTP/1.1 200 OK
+Content-Length:586
+
+2020-12-22 17:23:34.074204 [info]: request:HTTP/1.1 200 OK
+Content-Length:586
+Connection:keep-alive
+
+2020-12-22 17:23:34.074208 [info]: request:HTTP/1.1 200 OK
+Content-Length:586
+Connection:keep-alive
+
+
+2020-12-22 17:23:34.108294 [info]: send data to the client(10.0.2.15)
+2020-12-22 17:23:34.108323 [info]: adjust timer once
+2020-12-22 17:23:34.676585 [info]: deal with the client(10.0.2.15)
+2020-12-22 17:23:34.676626 [info]: adjust timer once
+2020-12-22 17:23:34.676652 [info]: GET /favicon.ico HTTP/1.1
+2020-12-22 17:23:34.676660 [info]: Host: 10.0.2.15:9006
+2020-12-22 17:23:34.676664 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:23:34.676668 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:23:34.676672 [info]: Accept: image/webp,*/*
+2020-12-22 17:23:34.676675 [info]: oop!unknow header: Accept: image/webp,*/*
+2020-12-22 17:23:34.676679 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:23:34.676682 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:23:34.676685 [info]: Accept-Encoding: gzip, deflate
+2020-12-22 17:23:34.676689 [info]: oop!unknow header: Accept-Encoding: gzip, deflate
+2020-12-22 17:23:34.676692 [info]: Connection: keep-alive
+2020-12-22 17:23:34.676695 [info]: Referer: http://10.0.2.15:9006/
+2020-12-22 17:23:34.676699 [info]: oop!unknow header: Referer: http://10.0.2.15:9006/
+2020-12-22 17:23:34.676702 [info]: 
+2020-12-22 17:23:34.676733 [info]: request:HTTP/1.1 200 OK
+
+2020-12-22 17:23:34.676741 [info]: request:HTTP/1.1 200 OK
+Content-Length:4286
+
+2020-12-22 17:23:34.676744 [info]: request:HTTP/1.1 200 OK
+Content-Length:4286
+Connection:keep-alive
+
+2020-12-22 17:23:34.676748 [info]: request:HTTP/1.1 200 OK
+Content-Length:4286
+Connection:keep-alive
+
+
+2020-12-22 17:23:34.741755 [info]: send data to the client(10.0.2.15)
+2020-12-22 17:23:34.741788 [info]: adjust timer once
+2020-12-22 17:23:35.352467 [info]: timer tick
+2020-12-22 17:23:40.352498 [info]: timer tick
+2020-12-22 17:23:41.176932 [info]: deal with the client(10.0.2.15)
+2020-12-22 17:23:41.176986 [info]: POST /0 HTTP/1.1
+2020-12-22 17:23:41.176996 [info]: Host: 10.0.2.15:9006
+2020-12-22 17:23:41.177000 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:23:41.177004 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:23:41.177007 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+2020-12-22 17:23:41.177011 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+2020-12-22 17:23:41.177015 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:23:41.177018 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:23:41.177021 [info]: Accept-Encoding: gzip, deflate
+2020-12-22 17:23:41.177025 [info]: oop!unknow header: Accept-Encoding: gzip, deflate
+2020-12-22 17:23:41.177028 [info]: Content-Type: application/x-www-form-urlencoded
+2020-12-22 17:23:41.177031 [info]: oop!unknow header: Content-Type: application/x-www-form-urlencoded
+2020-12-22 17:23:41.177035 [info]: Content-Length: 0
+2020-12-22 17:23:41.177039 [info]: Origin: http://10.0.2.15:9006
+2020-12-22 17:23:41.177042 [info]: oop!unknow header: Origin: http://10.0.2.15:9006
+2020-12-22 17:23:41.177045 [info]: Connection: keep-alive
+2020-12-22 17:23:41.177049 [info]: Referer: http://10.0.2.15:9006/
+2020-12-22 17:23:41.177053 [info]: oop!unknow header: Referer: http://10.0.2.15:9006/
+2020-12-22 17:23:41.177056 [info]: Upgrade-Insecure-Requests: 1
+2020-12-22 17:23:41.177059 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-12-22 17:23:41.177109 [info]: 
+2020-12-22 17:23:41.177153 [info]: request:HTTP/1.1 200 OK
+
+2020-12-22 17:23:41.177164 [info]: request:HTTP/1.1 200 OK
+Content-Length:724
+
+2020-12-22 17:23:41.177168 [info]: request:HTTP/1.1 200 OK
+Content-Length:724
+Connection:keep-alive
+
+2020-12-22 17:23:41.177171 [info]: request:HTTP/1.1 200 OK
+Content-Length:724
+Connection:keep-alive
+
+
+2020-12-22 17:23:41.177181 [info]: adjust timer once
+2020-12-22 17:23:41.231327 [info]: send data to the client(10.0.2.15)
+2020-12-22 17:23:41.231359 [info]: adjust timer once
+2020-12-22 17:23:45.352544 [info]: timer tick
+2020-12-22 17:23:47.922675 [info]: deal with the client(10.0.2.15)
+2020-12-22 17:23:47.922730 [info]: POST /3CGISQL.cgi HTTP/1.1
+2020-12-22 17:23:47.922740 [info]: Host: 10.0.2.15:9006
+2020-12-22 17:23:47.922744 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:23:47.922748 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:23:47.922752 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+2020-12-22 17:23:47.922755 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+2020-12-22 17:23:47.922759 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:23:47.922762 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:23:47.922765 [info]: Accept-Encoding: gzip, deflate
+2020-12-22 17:23:47.922769 [info]: oop!unknow header: Accept-Encoding: gzip, deflate
+2020-12-22 17:23:47.922777 [info]: Content-Type: application/x-www-form-urlencoded
+2020-12-22 17:23:47.922781 [info]: oop!unknow header: Content-Type: application/x-www-form-urlencoded
+2020-12-22 17:23:47.922784 [info]: Content-Length: 21
+2020-12-22 17:23:47.922788 [info]: Origin: http://10.0.2.15:9006
+2020-12-22 17:23:47.922791 [info]: oop!unknow header: Origin: http://10.0.2.15:9006
+2020-12-22 17:23:47.922794 [info]: Connection: keep-alive
+2020-12-22 17:23:47.922797 [info]: Referer: http://10.0.2.15:9006/0
+2020-12-22 17:23:47.922801 [info]: oop!unknow header: Referer: http://10.0.2.15:9006/0
+2020-12-22 17:23:47.922804 [info]: Upgrade-Insecure-Requests: 1
+2020-12-22 17:23:47.922807 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-12-22 17:23:47.922810 [info]: 
+2020-12-22 17:23:47.922813 [info]: user=123&password=123
+2020-12-22 17:23:47.922868 [info]: adjust timer once
+2020-12-22 17:23:48.324244 [info]: request:HTTP/1.1 200 OK
+
+2020-12-22 17:23:48.324273 [info]: request:HTTP/1.1 200 OK
+Content-Length:725
+
+2020-12-22 17:23:48.324278 [info]: request:HTTP/1.1 200 OK
+Content-Length:725
+Connection:keep-alive
+
+2020-12-22 17:23:48.324282 [info]: request:HTTP/1.1 200 OK
+Content-Length:725
+Connection:keep-alive
+
+
+2020-12-22 17:23:48.360920 [info]: send data to the client(10.0.2.15)
+2020-12-22 17:23:48.360954 [info]: adjust timer once
+2020-12-22 17:23:50.352577 [info]: timer tick
+2020-12-22 17:23:55.352607 [info]: timer tick
+2020-12-22 17:23:55.682928 [info]: deal with the client(10.0.2.15)
+2020-12-22 17:23:55.682979 [info]: POST /2CGISQL.cgi HTTP/1.1
+2020-12-22 17:23:55.682988 [info]: Host: 10.0.2.15:9006
+2020-12-22 17:23:55.682992 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:23:55.682996 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:23:55.683000 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+2020-12-22 17:23:55.683003 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+2020-12-22 17:23:55.683006 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:23:55.683024 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:23:55.683031 [info]: Accept-Encoding: gzip, deflate
+2020-12-22 17:23:55.683034 [info]: oop!unknow header: Accept-Encoding: gzip, deflate
+2020-12-22 17:23:55.683037 [info]: Content-Type: application/x-www-form-urlencoded
+2020-12-22 17:23:55.683041 [info]: oop!unknow header: Content-Type: application/x-www-form-urlencoded
+2020-12-22 17:23:55.683044 [info]: Content-Length: 21
+2020-12-22 17:23:55.683048 [info]: Origin: http://10.0.2.15:9006
+2020-12-22 17:23:55.683051 [info]: oop!unknow header: Origin: http://10.0.2.15:9006
+2020-12-22 17:23:55.683054 [info]: Connection: keep-alive
+2020-12-22 17:23:55.683057 [info]: Referer: http://10.0.2.15:9006/3CGISQL.cgi
+2020-12-22 17:23:55.683061 [info]: oop!unknow header: Referer: http://10.0.2.15:9006/3CGISQL.cgi
+2020-12-22 17:23:55.683064 [info]: Upgrade-Insecure-Requests: 1
+2020-12-22 17:23:55.683067 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-12-22 17:23:55.683070 [info]: 
+2020-12-22 17:23:55.683073 [info]: user=123&password=123
+2020-12-22 17:23:55.683103 [info]: request:HTTP/1.1 200 OK
+
+2020-12-22 17:23:55.683111 [info]: request:HTTP/1.1 200 OK
+Content-Length:723
+
+2020-12-22 17:23:55.683115 [info]: request:HTTP/1.1 200 OK
+Content-Length:723
+Connection:keep-alive
+
+2020-12-22 17:23:55.683118 [info]: request:HTTP/1.1 200 OK
+Content-Length:723
+Connection:keep-alive
+
+
+2020-12-22 17:23:55.683128 [info]: adjust timer once
+2020-12-22 17:23:55.716797 [info]: send data to the client(10.0.2.15)
+2020-12-22 17:23:55.716835 [info]: adjust timer once
+2020-12-22 17:23:59.381529 [info]: deal with the client(10.0.2.15)
+2020-12-22 17:23:59.381583 [info]: POST /6 HTTP/1.1
+2020-12-22 17:23:59.381598 [info]: Host: 10.0.2.15:9006
+2020-12-22 17:23:59.381603 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:23:59.381606 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:23:59.381610 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+2020-12-22 17:23:59.381614 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+2020-12-22 17:23:59.381617 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:23:59.381620 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:23:59.381624 [info]: Accept-Encoding: gzip, deflate
+2020-12-22 17:23:59.381627 [info]: oop!unknow header: Accept-Encoding: gzip, deflate
+2020-12-22 17:23:59.381631 [info]: Content-Type: application/x-www-form-urlencoded
+2020-12-22 17:23:59.381634 [info]: oop!unknow header: Content-Type: application/x-www-form-urlencoded
+2020-12-22 17:23:59.381638 [info]: Content-Length: 0
+2020-12-22 17:23:59.381641 [info]: Origin: http://10.0.2.15:9006
+2020-12-22 17:23:59.381645 [info]: oop!unknow header: Origin: http://10.0.2.15:9006
+2020-12-22 17:23:59.381648 [info]: Connection: keep-alive
+2020-12-22 17:23:59.381652 [info]: Referer: http://10.0.2.15:9006/2CGISQL.cgi
+2020-12-22 17:23:59.381656 [info]: oop!unknow header: Referer: http://10.0.2.15:9006/2CGISQL.cgi
+2020-12-22 17:23:59.381659 [info]: Upgrade-Insecure-Requests: 1
+2020-12-22 17:23:59.381662 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-12-22 17:23:59.381666 [info]: 
+2020-12-22 17:23:59.381689 [info]: request:HTTP/1.1 200 OK
+
+2020-12-22 17:23:59.381696 [info]: request:HTTP/1.1 200 OK
+Content-Length:381
+
+2020-12-22 17:23:59.381700 [info]: request:HTTP/1.1 200 OK
+Content-Length:381
+Connection:keep-alive
+
+2020-12-22 17:23:59.381703 [info]: request:HTTP/1.1 200 OK
+Content-Length:381
+Connection:keep-alive
+
+
+2020-12-22 17:23:59.381712 [info]: adjust timer once
+2020-12-22 17:23:59.401953 [info]: send data to the client(10.0.2.15)
+2020-12-22 17:23:59.401986 [info]: adjust timer once
+2020-12-22 17:24:00.352814 [info]: timer tick
+2020-12-22 17:24:00.667427 [info]: deal with the client(10.0.2.15)
+2020-12-22 17:24:00.667478 [info]: GET /xxx.mp4 HTTP/1.1
+2020-12-22 17:24:00.667487 [info]: Host: 10.0.2.15:9006
+2020-12-22 17:24:00.667491 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:24:00.667495 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:24:00.667499 [info]: Accept: video/webm,video/ogg,video/*;q=0.9,application/ogg;q=0.7,audio/*;q=0.6,*/*;q=0.5
+2020-12-22 17:24:00.667502 [info]: oop!unknow header: Accept: video/webm,video/ogg,video/*;q=0.9,application/ogg;q=0.7,audio/*;q=0.6,*/*;q=0.5
+2020-12-22 17:24:00.667505 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:24:00.667508 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:24:00.667511 [info]: Range: bytes=0-
+2020-12-22 17:24:00.667515 [info]: oop!unknow header: Range: bytes=0-
+2020-12-22 17:24:00.667518 [info]: Connection: keep-alive
+2020-12-22 17:24:00.667521 [info]: Referer: http://10.0.2.15:9006/6
+2020-12-22 17:24:00.667524 [info]: oop!unknow header: Referer: http://10.0.2.15:9006/6
+2020-12-22 17:24:00.667528 [info]: 
+2020-12-22 17:24:00.667550 [info]: request:HTTP/1.1 200 OK
+
+2020-12-22 17:24:00.667556 [info]: request:HTTP/1.1 200 OK
+Content-Length:39667571
+
+2020-12-22 17:24:00.667560 [info]: request:HTTP/1.1 200 OK
+Content-Length:39667571
+Connection:keep-alive
+
+2020-12-22 17:24:00.667563 [info]: request:HTTP/1.1 200 OK
+Content-Length:39667571
+Connection:keep-alive
+
+
+2020-12-22 17:24:00.667571 [info]: adjust timer once
+2020-12-22 17:24:02.423689 [info]: send data to the client(10.0.2.15)
+2020-12-22 17:24:02.423735 [info]: adjust timer once
+2020-12-22 17:24:02.460678 [info]: send data to the client(10.0.2.15)
+2020-12-22 17:24:02.460714 [info]: adjust timer once
+2020-12-22 17:24:04.628224 [info]: send data to the client(10.0.2.15)
+2020-12-22 17:24:04.628674 [info]: adjust timer once
+2020-12-22 17:24:05.353207 [info]: timer tick
+2020-12-22 17:24:10.353541 [info]: timer tick
+2020-12-22 17:24:15.354297 [info]: timer tick
+2020-12-22 17:24:20.354376 [info]: timer tick
+2020-12-22 17:24:25.354403 [info]: timer tick
+2020-12-22 17:24:27.952389 [info]: deal with the client(10.0.2.15)
+2020-12-22 17:24:27.952449 [info]: POST /7 HTTP/1.1
+2020-12-22 17:24:27.952521 [info]: adjust timer once
+2020-12-22 17:24:27.976456 [info]: Host: 10.0.2.15:9006
+2020-12-22 17:24:27.976496 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:24:27.976502 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:24:27.976506 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+2020-12-22 17:24:27.976509 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+2020-12-22 17:24:27.976513 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:24:27.976516 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:24:27.976520 [info]: Accept-Encoding: gzip, deflate
+2020-12-22 17:24:27.976523 [info]: oop!unknow header: Accept-Encoding: gzip, deflate
+2020-12-22 17:24:27.976526 [info]: Content-Type: application/x-www-form-urlencoded
+2020-12-22 17:24:27.976530 [info]: oop!unknow header: Content-Type: application/x-www-form-urlencoded
+2020-12-22 17:24:27.976533 [info]: Content-Length: 0
+2020-12-22 17:24:27.976539 [info]: Origin: http://10.0.2.15:9006
+2020-12-22 17:24:27.976543 [info]: oop!unknow header: Origin: http://10.0.2.15:9006
+2020-12-22 17:24:27.976546 [info]: Connection: keep-alive
+2020-12-22 17:24:27.976550 [info]: Referer: http://10.0.2.15:9006/2CGISQL.cgi
+2020-12-22 17:24:27.976553 [info]: oop!unknow header: Referer: http://10.0.2.15:9006/2CGISQL.cgi
+2020-12-22 17:24:27.976557 [info]: Upgrade-Insecure-Requests: 1
+2020-12-22 17:24:27.976560 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-12-22 17:24:27.976563 [info]: 
+2020-12-22 17:24:28.008580 [info]: request:HTTP/1.1 200 OK
+
+2020-12-22 17:24:28.008616 [info]: request:HTTP/1.1 200 OK
+Content-Length:392
+
+2020-12-22 17:24:28.008622 [info]: request:HTTP/1.1 200 OK
+Content-Length:392
+Connection:keep-alive
+
+2020-12-22 17:24:28.008625 [info]: request:HTTP/1.1 200 OK
+Content-Length:392
+Connection:keep-alive
+
+
+2020-12-22 17:24:28.030535 [info]: send data to the client(10.0.2.15)
+2020-12-22 17:24:28.030569 [info]: adjust timer once
+2020-12-22 17:24:28.117148 [info]: deal with the client(10.0.2.15)
+2020-12-22 17:24:28.117190 [info]: GET /test1.jpg HTTP/1.1
+2020-12-22 17:24:28.117198 [info]: Host: 10.0.2.15:9006
+2020-12-22 17:24:28.117202 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:24:28.117205 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
+2020-12-22 17:24:28.117209 [info]: Accept: image/webp,*/*
+2020-12-22 17:24:28.117212 [info]: oop!unknow header: Accept: image/webp,*/*
+2020-12-22 17:24:28.117215 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:24:28.117219 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2020-12-22 17:24:28.117222 [info]: Accept-Encoding: gzip, deflate
+2020-12-22 17:24:28.117225 [info]: oop!unknow header: Accept-Encoding: gzip, deflate
+2020-12-22 17:24:28.117228 [info]: Connection: keep-alive
+2020-12-22 17:24:28.117232 [info]: Referer: http://10.0.2.15:9006/7
+2020-12-22 17:24:28.117242 [info]: oop!unknow header: Referer: http://10.0.2.15:9006/7
+2020-12-22 17:24:28.117246 [info]: 
+2020-12-22 17:24:28.117272 [info]: request:HTTP/1.1 200 OK
+
+2020-12-22 17:24:28.117277 [info]: request:HTTP/1.1 200 OK
+Content-Length:78443
+
+2020-12-22 17:24:28.117281 [info]: request:HTTP/1.1 200 OK
+Content-Length:78443
+Connection:keep-alive
+
+2020-12-22 17:24:28.117284 [info]: request:HTTP/1.1 200 OK
+Content-Length:78443
+Connection:keep-alive
+
+
+2020-12-22 17:24:28.117291 [info]: adjust timer once
+2020-12-22 17:24:28.123481 [info]: send data to the client(10.0.2.15)
+2020-12-22 17:24:28.123510 [info]: adjust timer once
+2020-12-22 17:24:30.354709 [info]: timer tick
+2020-12-22 17:24:35.355685 [info]: timer tick
+2020-12-22 17:24:40.355717 [info]: timer tick
+2020-12-22 17:24:45.356394 [info]: timer tick
+2020-12-22 17:24:50.357227 [info]: timer tick
+2020-12-22 17:24:55.357262 [info]: timer tick
+2020-12-22 17:25:00.357512 [info]: timer tick
+2020-12-22 17:25:05.357828 [info]: timer tick
+2020-12-22 17:25:10.358558 [info]: timer tick
+2020-12-22 17:25:15.359474 [info]: timer tick
+2020-12-22 17:25:20.359854 [info]: timer tick
+2020-12-22 17:25:25.360384 [info]: timer tick
+2020-12-22 17:25:30.361183 [info]: timer tick
+2020-12-22 17:25:35.361304 [info]: timer tick
+2020-12-22 17:25:40.362681 [info]: timer tick
+2020-12-22 17:25:45.362899 [info]: timer tick
+2020-12-22 17:25:50.363740 [info]: timer tick
+2020-12-22 17:25:55.363927 [info]: timer tick
+2020-12-22 17:26:00.365004 [info]: timer tick
+2020-12-22 17:26:05.365955 [info]: timer tick
+2020-12-22 17:26:10.366887 [info]: timer tick
+2020-12-22 17:26:15.367582 [info]: timer tick
+2020-12-22 17:26:20.367889 [info]: timer tick
+2020-12-22 17:26:25.368019 [info]: timer tick
+2020-12-22 17:26:30.368058 [info]: timer tick
+2020-12-22 17:26:35.368371 [info]: timer tick
+2020-12-22 17:26:40.369149 [info]: timer tick
+2020-12-22 17:26:45.369261 [info]: timer tick
+2020-12-22 17:26:50.369434 [info]: timer tick
+2020-12-22 17:26:55.370028 [info]: timer tick
+2020-12-22 17:27:00.370479 [info]: timer tick
+2020-12-22 17:27:05.371114 [info]: timer tick
+2020-12-22 17:27:10.371300 [info]: timer tick
+2020-12-22 17:27:15.371453 [info]: timer tick
+2020-12-22 17:27:20.371823 [info]: timer tick
+2020-12-22 17:27:25.372077 [info]: timer tick
+2020-12-22 17:27:30.372106 [info]: timer tick
+2020-12-22 17:27:35.372197 [info]: timer tick
+2020-12-22 17:27:40.372414 [info]: timer tick
+2020-12-22 17:27:45.373364 [info]: timer tick
+2020-12-22 17:27:50.373597 [info]: timer tick
+2020-12-22 17:27:55.374503 [info]: timer tick
+2020-12-22 17:28:00.375307 [info]: timer tick
+2020-12-22 17:28:05.375505 [info]: timer tick
+2020-12-22 17:28:10.376338 [info]: timer tick
+2020-12-22 17:28:15.377051 [info]: timer tick
+2020-12-22 17:28:20.377463 [info]: timer tick
+2020-12-22 17:28:25.377960 [info]: timer tick
+2020-12-22 17:28:30.378073 [info]: timer tick
+2020-12-22 17:28:35.378122 [info]: timer tick
+2020-12-22 17:28:40.378175 [info]: timer tick
+2020-12-22 17:28:45.378506 [info]: timer tick
+2020-12-22 17:28:50.379169 [info]: timer tick
+2020-12-22 17:28:55.380522 [info]: timer tick
+2020-12-22 17:29:00.380834 [info]: timer tick
+2020-12-22 17:29:05.381492 [info]: timer tick
+2020-12-22 17:29:10.382497 [info]: timer tick
+2020-12-22 17:29:15.383055 [info]: timer tick
+2020-12-22 17:29:20.383798 [info]: timer tick
+2020-12-22 17:29:25.383850 [info]: timer tick
+2020-12-22 17:29:30.384086 [info]: timer tick
+2020-12-22 17:29:35.384130 [info]: timer tick
+2020-12-22 17:29:40.385357 [info]: timer tick
+2020-12-22 17:29:45.385568 [info]: timer tick
+2020-12-22 17:29:50.385613 [info]: timer tick
+2020-12-22 17:29:55.385651 [info]: timer tick
+2020-12-22 17:30:00.385696 [info]: timer tick
+2020-12-22 17:30:05.386615 [info]: timer tick
+2020-12-22 17:30:10.386680 [info]: timer tick
+2020-12-22 17:30:15.386918 [info]: timer tick
+2020-12-22 17:30:20.387045 [info]: timer tick
+2020-12-22 17:30:25.387095 [info]: timer tick
+2020-12-22 17:30:30.387792 [info]: timer tick
+2020-12-22 17:30:35.388088 [info]: timer tick
+2020-12-22 17:30:40.388713 [info]: timer tick

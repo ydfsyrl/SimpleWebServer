@@ -31,7 +31,7 @@ public:
 
     void thread_pool();
     void sql_pool();
-    void log_write();
+    void log_init();
     void trig_mode();
     void eventListen();
     void eventLoop();

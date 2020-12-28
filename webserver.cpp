@@ -7,7 +7,7 @@ WebServer::WebServer()
 
     //root文件夹路径
     char server_path[200];
-    getcwd(server_path, 200);
+    getcwd(server_path, 200);  //当前工作目录的绝对路径复制到参数buffer所指的内存空间中,参数maxlen为buffer的空间大小。
     char root[6] = "/root";
     m_root = (char *)malloc(strlen(server_path) + strlen(root) + 1);
     strcpy(m_root, server_path);
@@ -72,7 +72,7 @@ void WebServer::trig_mode()
     }
 }
 
-void WebServer::log_write()
+void WebServer::log_init()
 {
     if (0 == m_close_log)
     {
