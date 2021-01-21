@@ -46,8 +46,9 @@ public:
 	int m_close_log;	//日志开关
 };
 
-class connectionRAII{
 
+//将数据库连接的获取与释放通过RAII机制封装，避免手动释放
+class connectionRAII{
 public:
 	connectionRAII(MYSQL **con, connection_pool *connPool);
 	~connectionRAII();

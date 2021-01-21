@@ -33,6 +33,9 @@ private:
     connection_pool *m_connPool;  //数据库
     int m_actor_model;          //模型切换
 };
+
+
+
 template <typename T>
 threadpool<T>::threadpool( int actor_model, connection_pool *connPool, int thread_number, int max_requests) : m_actor_model(actor_model),m_thread_number(thread_number), m_max_requests(max_requests), m_threads(NULL),m_connPool(connPool)
 {
@@ -113,9 +116,9 @@ void threadpool<T>::run()
         m_queuelocker.unlock();
         if (!request)
             continue;
-        if (1 == m_actor_model)
+        if (1 == m_actor_model)  // reactor 并发
         {
-            if (0 == request->m_state)
+            if (0 == request->m_state) // read = 0
             {
                 if (request->read_once())
                 {
@@ -142,7 +145,7 @@ void threadpool<T>::run()
                 }
             }
         }
-        else
+        else  // proactor
         {
             connectionRAII mysqlcon(&request->mysql, m_connPool);
             request->process();

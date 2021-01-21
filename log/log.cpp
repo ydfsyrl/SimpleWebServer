@@ -19,9 +19,14 @@ Log::~Log()
         fclose(m_fp);
     }
 }
+
 //异步需要设置阻塞队列的长度，同步不需要设置
 bool Log::init(const char *file_name, int close_log, int log_buf_size, int split_lines, int max_queue_size)
+// file_name = dir name + file name str
 {
+    //
+    /* 设置异步 */
+    //
     //如果设置了max_queue_size,则设置为异步
     if (max_queue_size >= 1)
     {
@@ -31,7 +36,9 @@ bool Log::init(const char *file_name, int close_log, int log_buf_size, int split
         //flush_log_thread为回调函数,这里表示创建线程异步写日志
         pthread_create(&tid, NULL, flush_log_thread, NULL);
     }
-    
+    //
+    /* 设置文件名和时间 */
+    //
     m_close_log = close_log;
     m_log_buf_size = log_buf_size;
     m_buf = new char[m_log_buf_size];
@@ -43,22 +50,28 @@ bool Log::init(const char *file_name, int close_log, int log_buf_size, int split
     struct tm my_tm = *sys_tm;
 
  
-    const char *p = strrchr(file_name, '/');
+    const char *p = strrchr(file_name, '/');  // 找右一字符位置
     char log_full_name[256] = {0};
 
     if (p == NULL)
     {
-        snprintf(log_full_name, 255, "%d_%02d_%02d_%s", my_tm.tm_year + 1900, my_tm.tm_mon + 1, my_tm.tm_mday, file_name);
+        snprintf(log_full_name, 255, "%d_%02d_%02d_%s", my_tm.tm_year + 1900, my_tm.tm_mon + 1, my_tm.tm_mday, file_name);  // 按照format的格式格式化为字符串，然后再将其拷贝至str中
+        // printf(" NULL %s", log_full_name);
+        // fflush(stdout);
     }
     else
     {
         strcpy(log_name, p + 1);
-        strncpy(dir_name, file_name, p - file_name + 1);
+        strncpy(dir_name, file_name, p - file_name + 1);  // 切分dir name
         snprintf(log_full_name, 255, "%s%d_%02d_%02d_%s", dir_name, my_tm.tm_year + 1900, my_tm.tm_mon + 1, my_tm.tm_mday, log_name);
+        // printf("not NULL %s", log_full_name); 
+        // fflush(stdout);
     }
 
     m_today = my_tm.tm_mday;
-    
+    //
+    /* 打开文件 */
+    //
     m_fp = fopen(log_full_name, "a");
     if (m_fp == NULL)
     {
@@ -67,6 +80,24 @@ bool Log::init(const char *file_name, int close_log, int log_buf_size, int split
 
     return true;
 }
+
+void *Log::flush_log_thread(void *args)
+{
+    Log::get_instance()->async_write_log();
+}
+
+void *Log::async_write_log()
+{
+    string single_log;
+    //从阻塞队列中取出一个日志string，写入文件
+    while (m_log_queue->pop(single_log))
+    {
+        m_mutex.lock();
+        fputs(single_log.c_str(), m_fp);
+        m_mutex.unlock();
+    }
+}
+
 
 void Log::write_log(int level, const char *format, ...)
 {
@@ -116,7 +147,7 @@ void Log::write_log(int level, const char *format, ...)
         }
         else
         {
-            snprintf(new_log, 255, "%s%s%s.%lld", dir_name, tail, log_name, m_count / m_split_lines);
+            snprintf(new_log, 255, "%s%s%s.%lld", dir_name, tail, log_name, m_count / m_split_lines);  // 行数超出，另开一个文件
         }
         m_fp = fopen(new_log, "a");
     }
@@ -162,3 +193,4 @@ void Log::flush(void)
     fflush(m_fp);
     m_mutex.unlock();
 }
+

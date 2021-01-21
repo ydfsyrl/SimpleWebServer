@@ -217,7 +217,6 @@ bool WebServer::dealclinetdata()
         }
         timer(connfd, client_address);
     }
-
     else
     {
         while (1)
@@ -356,8 +355,7 @@ void WebServer::dealwithwrite(int sockfd)
         }
     }
     else
-    {
-        //proactor
+    { //proactor
         if (users[sockfd].write())
         {
             LOG_INFO("send data to the client(%s)", inet_ntoa(users[sockfd].get_address()->sin_addr));
