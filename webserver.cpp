@@ -15,6 +15,7 @@ WebServer::WebServer()
 
     //定时器
     users_timer = new client_data[MAX_FD];
+    users_timer_tw = new tw::client_data[MAX_FD];
 }
 
 WebServer::~WebServer()
@@ -25,11 +26,12 @@ WebServer::~WebServer()
     close(m_pipefd[0]);
     delete[] users;
     delete[] users_timer;
+    delete[] users_timer_tw;
     delete m_pool;
 }
 
 void WebServer::init(int port, string user, string passWord, string databaseName, int log_write, 
-                     int opt_linger, int trigmode, int sql_num, int thread_num, int close_log, int actor_model)
+                     int opt_linger, int trigmode, int sql_num, int thread_num, int close_log, int actor_model, int timer_mode)
 {
     m_port = port;
     m_user = user;
@@ -42,6 +44,7 @@ void WebServer::init(int port, string user, string passWord, string databaseName
     m_TRIGMode = trigmode;
     m_close_log = close_log;
     m_actormodel = actor_model;
+    m_timer_mode = timer_mode;
 }
 
 void WebServer::trig_mode()
@@ -132,7 +135,7 @@ void WebServer::eventListen()
     ret = listen(m_listenfd, 5);
     assert(ret >= 0);
 
-    utils.init(TIMESLOT);
+    utils.init(TIMESLOT, m_timer_mode);
 
     //epoll创建内核事件表
     epoll_event events[MAX_EVENT_NUMBER];
@@ -161,39 +164,69 @@ void WebServer::eventListen()
 void WebServer::timer(int connfd, struct sockaddr_in client_address)
 {
     users[connfd].init(connfd, client_address, m_root, m_CONNTrigmode, m_close_log, m_user, m_passWord, m_databaseName);
-
     //初始化client_data数据
     //创建定时器，设置回调函数和超时时间，绑定用户数据，将定时器添加到链表中
-    users_timer[connfd].address = client_address;
-    users_timer[connfd].sockfd = connfd;
-    util_timer *timer = new util_timer;
-    timer->user_data = &users_timer[connfd];
-    timer->cb_func = cb_func;
-    time_t cur = time(NULL);
-    timer->expire = cur + 3 * TIMESLOT;
-    users_timer[connfd].timer = timer;
-    utils.m_timer_lst.add_timer(timer);
+    
+    if (m_timer_mode==0){ // list timer
+        users_timer[connfd].address = client_address;
+        users_timer[connfd].sockfd = connfd;
+        util_timer *timer = new util_timer;
+        timer->user_data = &users_timer[connfd];
+        timer->cb_func = cb_func;
+        time_t cur = time(NULL);
+        timer->expire = cur + 3 * TIMESLOT;
+        users_timer[connfd].timer = timer;
+        utils.m_timer_lst.add_timer(timer);
+    }
+    else if (m_timer_mode==1){ // timer wheel
+        using namespace tw;
+        users_timer_tw[connfd].address = client_address;
+        users_timer_tw[connfd].sockfd = connfd;
+
+        tw_timer * timer_tw = utils.m_tw_timer.add_timer(3 * TIMESLOT);
+        // tw_timer *timer_tw = new tw_timer;
+        timer_tw->user_data = &users_timer_tw[connfd];
+        timer_tw->cb_func = cb_func;        
+        users_timer_tw[connfd].timer = timer_tw;
+    }
 }
 
 //若有数据传输，则将定时器往后延迟3个单位
 //并对新的定时器在链表上的位置进行调整
-void WebServer::adjust_timer(util_timer *timer)
+void WebServer::adjust_timer(void *vtimer) //void *
 {
-    time_t cur = time(NULL);
-    timer->expire = cur + 3 * TIMESLOT;
-    utils.m_timer_lst.adjust_timer(timer);
-
+    if (m_timer_mode==0){ // list timer
+        util_timer * timer =  (util_timer *) vtimer;
+        time_t cur = time(NULL);
+        timer->expire = cur + 3 * TIMESLOT;
+        utils.m_timer_lst.adjust_timer(timer);
+    }
+    else if (m_timer_mode==1){
+        using namespace tw;
+        tw_timer *timer =  (tw_timer *) vtimer;
+        utils.m_tw_timer.adjust_timer(timer, 3);
+    }
     LOG_INFO("%s", "adjust timer once");
 }
 
-void WebServer::deal_timer(util_timer *timer, int sockfd)
+void WebServer::deal_timer(void *vtimer, int sockfd)
 {
-    timer->cb_func(&users_timer[sockfd]);
-    if (timer)
+    if (!vtimer)
     {
-        utils.m_timer_lst.del_timer(timer);
+        return;
     }
 
+    if (m_timer_mode==0){ // list timer
+        util_timer * timer =  (util_timer *) vtimer;
+        timer->cb_func(&users_timer[sockfd]);
+        utils.m_timer_lst.del_timer(timer);
+    }
+    else if (m_timer_mode==1){
+        using namespace tw;
+        tw_timer *timer =  (tw_timer *) vtimer;
+        timer->cb_func(&users_timer_tw[sockfd]);
+        utils.m_tw_timer.del_timer(timer);
+    }
     LOG_INFO("close fd %d", users_timer[sockfd].sockfd);
 }
 
@@ -215,7 +248,7 @@ bool WebServer::dealclinetdata()
             LOG_ERROR("%s", "Internal server busy");
             return false;
         }
-        timer(connfd, client_address);
+        timer(connfd, client_address); // init
     }
     else
     {
@@ -278,14 +311,20 @@ bool WebServer::dealwithsignal(bool &timeout, bool &stop_server)
 
 void WebServer::dealwithread(int sockfd)
 {
-    util_timer *timer = users_timer[sockfd].timer;
-
+    void *vtimer = NULL;
+    if (m_timer_mode==0){
+        vtimer =  (void *) users_timer[sockfd].timer;
+    }
+    else if (m_timer_mode==1){
+        vtimer = (void *) users_timer_tw[sockfd].timer;
+    }
+    
     //reactor
     if (1 == m_actormodel)
     {
-        if (timer)
+        if (vtimer)
         {
-            adjust_timer(timer);
+            adjust_timer(vtimer);
         }
 
         //若监测到读事件，将该事件放入请求队列
@@ -293,11 +332,11 @@ void WebServer::dealwithread(int sockfd)
 
         while (true)
         {
-            if (1 == users[sockfd].improv)
+            if (1 == users[sockfd].improv)  // users : http_conn class
             {
                 if (1 == users[sockfd].timer_flag)
                 {
-                    deal_timer(timer, sockfd);
+                    deal_timer(vtimer, sockfd);
                     users[sockfd].timer_flag = 0;
                 }
                 users[sockfd].improv = 0;
@@ -315,27 +354,33 @@ void WebServer::dealwithread(int sockfd)
             //若监测到读事件，将该事件放入请求队列
             m_pool->append_p(users + sockfd);
 
-            if (timer)
+            if (vtimer)
             {
-                adjust_timer(timer);
+                adjust_timer(vtimer);
             }
         }
         else
         {
-            deal_timer(timer, sockfd);
+            deal_timer(vtimer, sockfd);
         }
     }
 }
 
 void WebServer::dealwithwrite(int sockfd)
 {
-    util_timer *timer = users_timer[sockfd].timer;
+    void *vtimer = NULL;
+    if (m_timer_mode==0){
+        vtimer =  (void *) users_timer[sockfd].timer;
+    }
+    else if (m_timer_mode==1){
+        vtimer = (void *) users_timer_tw[sockfd].timer;
+    }
     //reactor
     if (1 == m_actormodel)
     {
-        if (timer)
+        if (vtimer)
         {
-            adjust_timer(timer);
+            adjust_timer(vtimer);
         }
 
         m_pool->append(users + sockfd, 1);
@@ -346,7 +391,7 @@ void WebServer::dealwithwrite(int sockfd)
             {
                 if (1 == users[sockfd].timer_flag)
                 {
-                    deal_timer(timer, sockfd);
+                    deal_timer(vtimer, sockfd);
                     users[sockfd].timer_flag = 0;
                 }
                 users[sockfd].improv = 0;
@@ -360,14 +405,14 @@ void WebServer::dealwithwrite(int sockfd)
         {
             LOG_INFO("send data to the client(%s)", inet_ntoa(users[sockfd].get_address()->sin_addr));
 
-            if (timer)
+            if (vtimer)
             {
-                adjust_timer(timer);
+                adjust_timer(vtimer);
             }
         }
         else
         {
-            deal_timer(timer, sockfd);
+            deal_timer(vtimer, sockfd);
         }
     }
 }
@@ -400,8 +445,14 @@ void WebServer::eventLoop()
             else if (events[i].events & (EPOLLRDHUP | EPOLLHUP | EPOLLERR))
             {
                 //服务器端关闭连接，移除对应的定时器
-                util_timer *timer = users_timer[sockfd].timer;
-                deal_timer(timer, sockfd);
+                void* vtimer = NULL;
+                if (m_timer_mode==0){
+                    vtimer =  (void *) users_timer[sockfd].timer;
+                }
+                else if (m_timer_mode==1){
+                    vtimer = (void *) users_timer_tw[sockfd].timer;
+                }
+                deal_timer(vtimer, sockfd);
             }
             //处理信号
             else if ((sockfd == m_pipefd[0]) && (events[i].events & EPOLLIN))

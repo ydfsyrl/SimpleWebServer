@@ -14,6 +14,7 @@
 
 #include "./threadpool/threadpool.h"
 #include "./http/http_conn.h"
+#include "Utils.h"
 
 const int MAX_FD = 65536;           //最大文件描述符
 const int MAX_EVENT_NUMBER = 10000; //最大事件数
@@ -27,7 +28,7 @@ public:
 
     void init(int port , string user, string passWord, string databaseName,
               int log_write , int opt_linger, int trigmode, int sql_num,
-              int thread_num, int close_log, int actor_model);
+              int thread_num, int close_log, int actor_model, int timer_mode);
 
     void thread_pool();
     void sql_pool();
@@ -36,8 +37,8 @@ public:
     void eventListen();
     void eventLoop();
     void timer(int connfd, struct sockaddr_in client_address);
-    void adjust_timer(util_timer *timer);
-    void deal_timer(util_timer *timer, int sockfd);
+    void adjust_timer(void *vtimer);
+    void deal_timer(void *vtimer, int sockfd);
     bool dealclinetdata();
     bool dealwithsignal(bool& timeout, bool& stop_server);
     void dealwithread(int sockfd);
@@ -77,6 +78,8 @@ public:
 
     //定时器相关
     client_data *users_timer;
+    tw::client_data *users_timer_tw;  // 和users_timer一样的time wheel 版本
     Utils utils;
+    int m_timer_mode;  // 0 为链表，1为时间轮
 };
 #endif

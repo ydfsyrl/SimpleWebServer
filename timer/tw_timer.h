@@ -5,6 +5,8 @@
 #include <netinet/in.h>
 #include <stdio.h>
 
+namespace tw{
+
 #define BUFFER_SIZE 64
 class tw_timer;
 struct client_data
@@ -18,7 +20,7 @@ struct client_data
 class tw_timer
 {
 public:
-    tw_timer( int rot, int ts ) 
+    tw_timer( int rot=0, int ts=0 ) 
     : next( NULL ), prev( NULL ), rotation( rot ), time_slot( ts ){}
 
 public:
@@ -53,6 +55,7 @@ public:
             }
         }
     }
+
     tw_timer* add_timer( int timeout )
     {
         if( timeout < 0 )
@@ -84,6 +87,45 @@ public:
         }
         return timer;
     }
+
+void adjust_timer(tw_timer* timer, int slotnum)
+{
+    if (!timer)
+    {
+        return;
+    }
+    int ts = timer->time_slot;
+        if( timer == slots[ts] )
+        {
+            slots[ts] = slots[ts]->next;
+            if( slots[ts] )
+            {
+                slots[ts]->prev = NULL;
+            }
+        }
+        else
+        {
+            timer->prev->next = timer->next;
+            if( timer->next )
+            {
+                timer->next->prev = timer->prev;
+            }
+        }
+    ts = (ts+slotnum)/N;
+    timer->time_slot = ts;
+    timer->rotation += slotnum/N;
+    if( !slots[ts] )  // 插入
+    {
+        slots[ts] = timer;
+    }
+    else
+    {
+        timer->next = slots[ts];
+        slots[ts]->prev = timer;
+        slots[ts] = timer;
+    }
+}
+
     void del_timer( tw_timer* timer )
     {
         if( !timer )
@@ -110,6 +152,7 @@ public:
             delete timer;
         }
     }
+
     void tick()
     {
         tw_timer* tmp = slots[cur_slot];
@@ -153,18 +196,12 @@ public:
     }
 
 private:
-    static const int N = 60;
-    static const int TI = 1; 
+    static const int N = 12; // N个槽
+    static const int TI = 5;  // 一个槽的时间间隔
     tw_timer* slots[N];
     int cur_slot;
 };
 
-void cb_func_for_tw(client_data *user_data)  // 超时后关闭连接
-{
-    epoll_ctl(Utils::u_epollfd, EPOLL_CTL_DEL, user_data->sockfd, 0);
-    assert(user_data);
-    close(user_data->sockfd);
-    http_conn::m_user_count--;
 }
 
 #endif
