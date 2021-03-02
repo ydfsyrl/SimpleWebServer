@@ -55,8 +55,8 @@ public:
             }
         }
     }
-
-    tw_timer* add_timer( int timeout )
+    /*创建一个定时器，插入适合的槽中*/
+    tw_timer* add_timer( int timeout ) // 15
     {
         if( timeout < 0 )
         {
@@ -69,15 +69,15 @@ public:
         }
         else
         {
-            ticks = timeout / TI;
+            ticks = timeout / TI;  // TI=5, ticks=3
         }
         int rotation = ticks / N;
-        int ts = ( cur_slot + ( ticks % N ) ) % N;
+        int ts = ( cur_slot + ticks ) % N;
         tw_timer* timer = new tw_timer( rotation, ts );
         if( !slots[ts] )
         {
-            printf( "add timer, rotation is %d, ts is %d, cur_slot is %d\n", rotation, ts, cur_slot );
             slots[ts] = timer;
+            // printf( "add timer, rotation is %d, ts is %d, cur_slot is %d\n", rotation, ts, cur_slot );
         }
         else
         {
@@ -88,12 +88,14 @@ public:
         return timer;
     }
 
+// 延后slotnum个单位
 void adjust_timer(tw_timer* timer, int slotnum)
 {
     if (!timer)
     {
         return;
     }
+    
     int ts = timer->time_slot;
         if( timer == slots[ts] )
         {
@@ -111,9 +113,12 @@ void adjust_timer(tw_timer* timer, int slotnum)
                 timer->next->prev = timer->prev;
             }
         }
-    ts = (ts+slotnum)/N;
+    timer->next = NULL;  // !!!
+    timer->prev = NULL;
+    timer->rotation += (slotnum+ts)/N; //gai
+    ts = (ts+slotnum)%N;  
     timer->time_slot = ts;
-    timer->rotation += slotnum/N;
+    // timer->rotation += slotnum/N;    
     if( !slots[ts] )  // 插入
     {
         slots[ts] = timer;
@@ -181,6 +186,7 @@ void adjust_timer(tw_timer* timer, int slotnum)
                 }
                 else
                 {
+                    printf( "delete in cur_slot\n" );
                     tmp->prev->next = tmp->next;
                     if( tmp->next )
                     {
@@ -201,7 +207,6 @@ private:
     tw_timer* slots[N];
     int cur_slot;
 };
-
 }
 
 #endif

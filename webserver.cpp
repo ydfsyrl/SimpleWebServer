@@ -150,7 +150,7 @@ void WebServer::eventListen()
     utils.setnonblocking(m_pipefd[1]);
     utils.addfd(m_epollfd, m_pipefd[0], false, 0);
 
-    utils.addsig(SIGPIPE, SIG_IGN);
+    utils.addsig(SIGPIPE, SIG_IGN);  //信号发送到pipe，统一事件源
     utils.addsig(SIGALRM, utils.sig_handler, false);
     utils.addsig(SIGTERM, utils.sig_handler, false);
 
@@ -183,7 +183,7 @@ void WebServer::timer(int connfd, struct sockaddr_in client_address)
         users_timer_tw[connfd].address = client_address;
         users_timer_tw[connfd].sockfd = connfd;
 
-        tw_timer * timer_tw = utils.m_tw_timer.add_timer(3 * TIMESLOT);
+        tw_timer * timer_tw = utils.m_tw_timer.add_timer(3 * TIMESLOT);  // TIMESLOT=5
         // tw_timer *timer_tw = new tw_timer;
         timer_tw->user_data = &users_timer_tw[connfd];
         timer_tw->cb_func = cb_func;        
@@ -234,13 +234,13 @@ bool WebServer::dealclinetdata()
 {
     struct sockaddr_in client_address;
     socklen_t client_addrlength = sizeof(client_address);
-    if (0 == m_LISTENTrigmode)
+    if (0 == m_LISTENTrigmode) // ET
     {
         int connfd = accept(m_listenfd, (struct sockaddr *)&client_address, &client_addrlength);
         if (connfd < 0)
         {
             LOG_ERROR("%s:errno is:%d", "accept error", errno);
-            return false;
+            return false;  // ET LT 区别
         }
         if (http_conn::m_user_count >= MAX_FD)
         {
@@ -250,7 +250,7 @@ bool WebServer::dealclinetdata()
         }
         timer(connfd, client_address); // init
     }
-    else
+    else  // LT
     {
         while (1)
         {
@@ -328,9 +328,9 @@ void WebServer::dealwithread(int sockfd)
         }
 
         //若监测到读事件，将该事件放入请求队列
-        m_pool->append(users + sockfd, 0);
+        bool appendsucess = m_pool->append(users + sockfd, 0);
 
-        while (true)
+        while (appendsucess)
         {
             if (1 == users[sockfd].improv)  // users : http_conn class
             {
@@ -383,9 +383,9 @@ void WebServer::dealwithwrite(int sockfd)
             adjust_timer(vtimer);
         }
 
-        m_pool->append(users + sockfd, 1);
+        bool appendsucess = m_pool->append(users + sockfd, 1);
 
-        while (true)
+        while (appendsucess)
         {
             if (1 == users[sockfd].improv)
             {
@@ -417,7 +417,7 @@ void WebServer::dealwithwrite(int sockfd)
     }
 }
 
-void WebServer::eventLoop()
+void WebServer::eventLoop()  // 主体
 {
     bool timeout = false;
     bool stop_server = false;
